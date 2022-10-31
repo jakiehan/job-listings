@@ -1,0 +1,27 @@
+.header {
+  min-height: 156px;
+  background-image: url(../../assets/images/bg-header-mobile.svg);
+  background-color: hsl(180, 29%, 50%);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__title {
+  font-size: 27px;
+  line-height: 29px;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    background-image: url(../../assets/images/bg-header-desktop.svg);
+  }
+
+  .header__title {
+    font-size: 31px;
+    line-height: 33px;
+  }
+}

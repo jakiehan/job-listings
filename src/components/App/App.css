@@ -1,0 +1,13 @@
+.app {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #effafa;
+  font-family: 'League Spartan', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.04rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 0;
+}

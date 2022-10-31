@@ -1,0 +1,12 @@
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stack_type_tools {
+  justify-content: center;
+}
