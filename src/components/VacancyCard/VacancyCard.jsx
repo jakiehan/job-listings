@@ -3,9 +3,22 @@ import './VacancyCard.css';
 import Stack from '../Stack/Stack.jsx';
 import Badge from '../Badge/Badge.jsx';
 
-const VacancyCard = ({ card }) => {
+const VacancyCard = ({ card, handleAddFilter }) => {
 
-  const { company, logo, position, new: isNew, featured, postedAt, contract, location, id, role, level, languages, tools } = card;
+  const {
+    company,
+    logo,
+    position,
+    new: isNew,
+    featured,
+    postedAt,
+    contract,
+    location,
+    role,
+    level,
+    languages,
+    tools,
+  } = card;
 
   const metaData = [].concat(postedAt, contract, location);
   const badges = [].concat(role, level, ...languages, ...tools);
@@ -14,22 +27,34 @@ const VacancyCard = ({ card }) => {
     <div className={`card ${featured ? 'card_type_featured' : ''}`}>
       <article className="job-position">
         <div className="job-position__wrapper">
-          <img className="job-position__img" src={logo} alt={company} />
+          <img
+            className="job-position__img"
+            src={logo}
+            alt={company}
+          />
           <div className="job-position__info">
             <div className="job-position__company">
-              <h3 className="job-position__company-title">{company}</h3>
+              <h3 className="job-position__company-title">
+                {company}
+              </h3>
               {(isNew || featured) && (
                 <Stack>
                   {isNew && (
                     <li>
-                      <Badge type="company" colorScheme="primary">
+                      <Badge
+                        type="company"
+                        colorScheme="primary"
+                      >
                         NEW!
                       </Badge>
                     </li>
                   )}
                   {featured && (
                     <li>
-                      <Badge type="company" colorScheme="dark">
+                      <Badge
+                        type="company"
+                        colorScheme="dark"
+                      >
                         FEATURED
                       </Badge>
                     </li>
@@ -37,7 +62,9 @@ const VacancyCard = ({ card }) => {
                 </Stack>
               )}
             </div>
-            <h2 className="job-position__title">{position}</h2>
+            <h2 className="job-position__title">
+              {position}
+            </h2>
             <Stack>
               {metaData.map((item) => (
                 <li key={item}>
@@ -52,7 +79,11 @@ const VacancyCard = ({ card }) => {
         <Stack type="tools">
           {badges.map((item =>
             <li key={item}>
-              <Badge type="tools" colorScheme="light">
+              <Badge
+                type="tools"
+                colorScheme="light"
+                onClickBadge={() => handleAddFilter(item)}
+              >
                 {item}
               </Badge>
             </li>

@@ -21,6 +21,9 @@
   background-color: #5ba4a4;
   color: #effafa;
 }
+.badge_type_company {
+  cursor: initial;
+}
 
 .badge__title {
   padding: 0 15px;
@@ -33,6 +36,7 @@
   line-height: 17px;
   font-weight: 700;
 }
+
 
 .badge_type_clearable {
   background-color: #eef6f6;
