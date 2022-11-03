@@ -1,23 +1,21 @@
 import { legacy_createStore as createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
-import { getStateLocalStorage, setStateLocalStorage } from './localStorage.js';
-import throttle from 'lodash/throttle';
 
-export const configureStore = () => {
-
-  const persistedState = getStateLocalStorage();
-
-  const store = createStore(
-    rootReducer,
-    persistedState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-
-  store.subscribe(throttle(() => {
-    setStateLocalStorage({
-      filters: store.getState().filters,
-    })
-  }, 1000))
-
-  return store;
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['positions']
 }
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(
+  persistedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const persistor = persistStore(store);
+
+export { store, persistor }
